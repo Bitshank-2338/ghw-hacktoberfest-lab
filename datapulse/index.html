@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DataPulse Sensor Dashboard for monitoring connected IoT environments.">
+  <title>DataPulse | Sensor Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23182336'/%3E%3Cpath d='M8 23v-7m8 7V10m8 13V6' stroke='%2371b5ff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#overview" aria-label="DataPulse home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Data<span>Pulse</span></span>
+      </a>
+      <p class="workspace-label">Workspace</p>
+      <nav class="main-nav">
+        <a class="nav-item active" href="#overview"><span class="nav-icon" aria-hidden="true">⌂</span>Overview</a>
+        <a class="nav-item" href="#readings"><span class="nav-icon" aria-hidden="true">≋</span>Live readings</a>
+        <a class="nav-item" href="#analytics"><span class="nav-icon" aria-hidden="true">⌁</span>Analytics</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="connection-pill"><span class="pulse-dot" aria-hidden="true"></span><span><strong>All systems online</strong><small>Synced just now</small></span></div>
+        <button class="help-link" type="button" id="helpButton"><span aria-hidden="true">?</span> Help center</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>Data<span>Pulse</span></div>
+        <div class="topbar-actions">
+          <span class="last-sync" id="lastSync">Last updated just now</span>
+          <button class="icon-button" type="button" aria-label="Toggle notifications" id="notificationButton">
+            <span aria-hidden="true">♢</span><i class="notification-badge"></i>
+          </button>
+          <button class="avatar" type="button" id="profileButton" aria-label="Open profile menu" aria-expanded="false">AS</button>
+          <div class="profile-menu" id="profileMenu" hidden>
+            <strong>Alex Smith</strong><small>Administrator</small>
+            <button type="button" id="accountButton">Account settings</button>
+            <button type="button" id="logoutButton">Sign out</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page-intro" id="overview">
+          <div>
+            <p class="eyebrow">Saturday, October 10, 2026</p>
+            <h1>Good morning, Alex <span aria-hidden="true">✦</span></h1>
+            <p class="intro-copy">Here’s what’s happening across your sensor network.</p>
+          </div>
+          <div class="intro-actions">
+            <button class="button button-secondary" type="button" id="resetButton"><span aria-hidden="true">↺</span> Reset</button>
+            <button class="button button-primary" type="button" id="generateButton"><span aria-hidden="true">＋</span> Generate sample data</button>
+          </div>
+        </section>
+
+        <section class="summary-grid" aria-label="Network summary">
+          <article class="metric-card accent-coral">
+            <div class="metric-heading"><span class="metric-icon coral" aria-hidden="true">◒</span><span class="metric-label">Latest temperature</span><span class="trend up">↑ 1.2%</span></div>
+            <div class="metric-value"><span id="latestTemperature">23.8</span><small>°C</small></div>
+            <p class="metric-note">Compared to yesterday</p>
+            <div class="sparkline coral-line" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </article>
+          <article class="metric-card accent-blue">
+            <div class="metric-heading"><span class="metric-icon blue" aria-hidden="true">◌</span><span class="metric-label">Average humidity</span><span class="trend down">↓ 0.8%</span></div>
+            <div class="metric-value"><span id="averageHumidity">52.4</span><small>%</small></div>
+            <p class="metric-note">Across all active devices</p>
+            <div class="sparkline blue-line" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </article>
+          <article class="metric-card accent-violet">
+            <div class="metric-heading"><span class="metric-icon violet" aria-hidden="true">⌁</span><span class="metric-label">Active devices</span><span class="trend neutral">100%</span></div>
+            <div class="metric-value"><span id="activeDevices">12</span><small>/ 12</small></div>
+            <p class="metric-note">No connectivity issues</p>
+            <div class="device-progress" aria-hidden="true"><span></span></div>
+          </article>
+          <article class="metric-card accent-green">
+            <div class="metric-heading"><span class="metric-icon green" aria-hidden="true">✓</span><span class="metric-label">System status</span><span class="status-chip">Healthy</span></div>
+            <div class="metric-value status-value">Operational</div>
+            <p class="metric-note">All systems are running normally</p>
+            <div class="status-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid" id="analytics">
+          <article class="panel chart-panel">
+            <div class="panel-header">
+              <div><p class="panel-kicker">Temperature trend</p><h2>Temperature over time</h2></div>
+              <div class="chart-legend"><span><i class="legend-dot coral-dot"></i>Temperature</span><button class="select-button" type="button" id="rangeButton">Last 24 hours <span aria-hidden="true">⌄</span></button></div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="temperatureChart" role="img" aria-label="Line chart showing temperature over the last 24 hours"></canvas>
+              <div class="chart-tooltip" id="chartTooltip" hidden><strong>23.8°C</strong><span>10:00 AM</span></div>
+            </div>
+          </article>
+          <article class="panel health-panel">
+            <div class="panel-header"><div><p class="panel-kicker">Network health</p><h2>Device status</h2></div><button class="more-button" type="button" id="healthDetailsButton" aria-label="Show device status details">•••</button></div>
+            <div class="health-score"><div class="health-ring"><span>98<small>%</small></span></div><div><strong>Excellent</strong><p>Network health score</p></div></div>
+            <div class="health-list"><div><span><i class="health-dot online"></i>Online</span><strong>10</strong></div><div><span><i class="health-dot warning"></i>Warning</span><strong>2</strong></div><div><span><i class="health-dot offline"></i>Offline</span><strong>0</strong></div></div>
+          </article>
+        </section>
+
+        <section class="panel readings-panel" id="readings">
+          <div class="panel-header readings-header"><div><p class="panel-kicker">Live feed</p><h2>Recent sensor readings</h2><p class="panel-subtitle">The latest data from your connected devices.</p></div><button class="button button-ghost" type="button" id="exportButton"><span aria-hidden="true">↓</span> Export CSV</button></div>
+          <div class="filters" aria-label="Filter sensor readings">
+            <label class="filter-control"><span>Device</span><select id="deviceFilter"><option value="all">All devices</option></select></label>
+            <label class="filter-control"><span>Location</span><select id="locationFilter"><option value="all">All locations</option></select></label>
+            <button class="clear-filters" type="button" id="clearFilters">Clear filters</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Recent sensor readings</caption>
+              <thead><tr><th scope="col">Timestamp</th><th scope="col">Device</th><th scope="col">Location</th><th scope="col">Temperature</th><th scope="col">Humidity</th><th scope="col">Status</th></tr></thead>
+              <tbody id="readingsBody"></tbody>
+            </table>
+            <div class="empty-state" id="emptyState" hidden><span class="empty-icon" aria-hidden="true">⌁</span><h3>No readings found</h3><p>Try adjusting your filters to see more sensor data.</p></div>
+            <div class="error-state" id="errorState" hidden><span class="empty-icon" aria-hidden="true">!</span><h3>Unable to load readings</h3><p>Something went wrong. Generate sample data to try again.</p></div>
+          </div>
+          <div class="table-footer"><span id="readingCount">Showing 6 of 12 readings</span><div class="pagination"><button type="button" id="previousPage" aria-label="Previous page" disabled>‹</button><button type="button" class="page-current" id="pageNumber" aria-current="page">1</button><button type="button" id="nextPage" aria-label="Next page">›</button></div></div>
+        </section>
+        <footer class="page-footer"><span>DataPulse Sensor Dashboard</span><span>Local demo · No data leaves your browser</span></footer>
+      </div>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="loginModal" hidden>
+    <section class="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal-close" type="button" id="closeLoginButton" aria-label="Close login dialog">×</button>
+      <div class="login-brand"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>Data<span>Pulse</span></div>
+      <p class="panel-kicker">Secure workspace</p>
+      <h2 id="loginTitle">Welcome back</h2>
+      <p class="login-copy">Sign in to manage your sensor network.</p>
+      <form id="loginForm">
+        <label class="login-field">Email address<input type="email" id="loginEmail" placeholder="alex@example.com" autocomplete="email" required></label>
+        <label class="login-field">Password<input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" minlength="4" required></label>
+        <div class="login-options"><label><input type="checkbox" id="rememberMe"> Remember me</label><button type="button" id="forgotPassword">Forgot password?</button></div>
+        <p class="form-message" id="loginMessage" role="alert"></p>
+        <button class="button button-primary login-submit" type="submit">Sign in</button>
+      </form>
+      <p class="demo-hint">Demo mode: any valid email and password works.</p>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

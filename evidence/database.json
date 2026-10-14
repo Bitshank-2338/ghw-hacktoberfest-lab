@@ -1,0 +1,332 @@
+{
+  "checkedAt": "2026-10-14T00:51:39.681Z",
+  "service": "roam-staging",
+  "schema": "ghw_lab",
+  "simulation": "IoT readings are synthetic; market ticks are live Coinbase data; place documents are fictional search examples.",
+  "hypertables": [
+    {
+      "hypertable_schema": "ghw_lab",
+      "hypertable_name": "market_ticks",
+      "num_chunks": "1"
+    },
+    {
+      "hypertable_schema": "ghw_lab",
+      "hypertable_name": "sensor_data",
+      "num_chunks": "5"
+    }
+  ],
+  "sensors": [
+    {
+      "label": "Trail entrance",
+      "location": "outdoors",
+      "readings": "289",
+      "avg_temp": "22.96"
+    },
+    {
+      "label": "Workshop room",
+      "location": "indoors",
+      "readings": "289",
+      "avg_temp": "23.96"
+    },
+    {
+      "label": "Garden corner",
+      "location": "outdoors",
+      "readings": "289",
+      "avg_temp": "24.96"
+    },
+    {
+      "label": "Cafe patio",
+      "location": "outdoors",
+      "readings": "289",
+      "avg_temp": "25.96"
+    }
+  ],
+  "aggregate": [
+    {
+      "bucket": "2026-10-14T00:00:00.000Z",
+      "sensor_id": 1,
+      "samples": "1",
+      "avg_temp": "22.34",
+      "min_temp": "22.34",
+      "max_temp": "22.34"
+    },
+    {
+      "bucket": "2026-10-14T00:00:00.000Z",
+      "sensor_id": 2,
+      "samples": "1",
+      "avg_temp": "23.34",
+      "min_temp": "23.34",
+      "max_temp": "23.34"
+    },
+    {
+      "bucket": "2026-10-14T00:00:00.000Z",
+      "sensor_id": 3,
+      "samples": "1",
+      "avg_temp": "24.34",
+      "min_temp": "24.34",
+      "max_temp": "24.34"
+    },
+    {
+      "bucket": "2026-10-14T00:00:00.000Z",
+      "sensor_id": 4,
+      "samples": "1",
+      "avg_temp": "25.34",
+      "min_temp": "25.34",
+      "max_temp": "25.34"
+    },
+    {
+      "bucket": "2026-10-13T23:00:00.000Z",
+      "sensor_id": 1,
+      "samples": "12",
+      "avg_temp": "21.01",
+      "min_temp": "20.18",
+      "max_temp": "22.09"
+    },
+    {
+      "bucket": "2026-10-13T23:00:00.000Z",
+      "sensor_id": 2,
+      "samples": "12",
+      "avg_temp": "22.01",
+      "min_temp": "21.18",
+      "max_temp": "23.09"
+    },
+    {
+      "bucket": "2026-10-13T23:00:00.000Z",
+      "sensor_id": 3,
+      "samples": "12",
+      "avg_temp": "23.01",
+      "min_temp": "22.18",
+      "max_temp": "24.09"
+    },
+    {
+      "bucket": "2026-10-13T23:00:00.000Z",
+      "sensor_id": 4,
+      "samples": "12",
+      "avg_temp": "24.01",
+      "min_temp": "23.18",
+      "max_temp": "25.09"
+    },
+    {
+      "bucket": "2026-10-13T22:00:00.000Z",
+      "sensor_id": 1,
+      "samples": "12",
+      "avg_temp": "20.18",
+      "min_temp": "20.00",
+      "max_temp": "20.62"
+    },
+    {
+      "bucket": "2026-10-13T22:00:00.000Z",
+      "sensor_id": 2,
+      "samples": "12",
+      "avg_temp": "21.18",
+      "min_temp": "21.00",
+      "max_temp": "21.62"
+    },
+    {
+      "bucket": "2026-10-13T22:00:00.000Z",
+      "sensor_id": 3,
+      "samples": "12",
+      "avg_temp": "22.18",
+      "min_temp": "22.00",
+      "max_temp": "22.62"
+    },
+    {
+      "bucket": "2026-10-13T22:00:00.000Z",
+      "sensor_id": 4,
+      "samples": "12",
+      "avg_temp": "23.18",
+      "min_temp": "23.00",
+      "max_temp": "23.62"
+    }
+  ],
+  "aggregateMetadata": [
+    {
+      "view_schema": "ghw_lab",
+      "view_name": "sensor_hourly",
+      "materialized_only": false
+    }
+  ],
+  "finance": [
+    {
+      "product": "BTC-USD",
+      "ticks": "78",
+      "first_tick": "2026-10-14T00:46:09.174Z",
+      "last_tick": "2026-10-14T00:46:24.491Z",
+      "min_price": "83568.25",
+      "max_price": "83582.98"
+    },
+    {
+      "product": "ETH-USD",
+      "ticks": "22",
+      "first_tick": "2026-10-14T00:46:09.170Z",
+      "last_tick": "2026-10-14T00:46:20.594Z",
+      "min_price": "2515.64",
+      "max_price": "2516.31"
+    }
+  ],
+  "latestTicks": [
+    {
+      "time": "2026-10-14T00:46:24.491Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667458",
+      "price": "83568.25",
+      "bid": "83568.25",
+      "ask": "83568.26",
+      "received_at": "2026-10-14T00:46:37.887Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    },
+    {
+      "time": "2026-10-14T00:46:23.475Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667457",
+      "price": "83568.25",
+      "bid": "83568.25",
+      "ask": "83568.26",
+      "received_at": "2026-10-14T00:46:37.618Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    },
+    {
+      "time": "2026-10-14T00:46:23.266Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667456",
+      "price": "83568.26",
+      "bid": "83568.25",
+      "ask": "83568.26",
+      "received_at": "2026-10-14T00:46:37.359Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    },
+    {
+      "time": "2026-10-14T00:46:22.976Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667455",
+      "price": "83568.25",
+      "bid": "83568.25",
+      "ask": "83568.26",
+      "received_at": "2026-10-14T00:46:37.100Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    },
+    {
+      "time": "2026-10-14T00:46:22.398Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667454",
+      "price": "83568.25",
+      "bid": "83568.25",
+      "ask": "83568.26",
+      "received_at": "2026-10-14T00:46:36.789Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    },
+    {
+      "time": "2026-10-14T00:46:22.305Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667452",
+      "price": "83571.84",
+      "bid": "83568.25",
+      "ask": "83571.85",
+      "received_at": "2026-10-14T00:46:36.262Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    },
+    {
+      "time": "2026-10-14T00:46:22.305Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667453",
+      "price": "83568.25",
+      "bid": "83568.25",
+      "ask": "83571.85",
+      "received_at": "2026-10-14T00:46:36.519Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    },
+    {
+      "time": "2026-10-14T00:46:22.266Z",
+      "product": "BTC-USD",
+      "trade_id": "1105667451",
+      "price": "83571.84",
+      "bid": "83571.84",
+      "ask": "83571.85",
+      "received_at": "2026-10-14T00:46:36.009Z",
+      "source_url": "https://ws-feed.exchange.coinbase.com"
+    }
+  ],
+  "vectors": [
+    {
+      "id": "cafe",
+      "title": "Coffee and cake",
+      "category": "food",
+      "dimensions": 768,
+      "embedding_model": "nomic-embed-text"
+    },
+    {
+      "id": "hike",
+      "title": "Hilltop hiking route",
+      "category": "outdoors",
+      "dimensions": 768,
+      "embedding_model": "nomic-embed-text"
+    },
+    {
+      "id": "museum",
+      "title": "Local history museum",
+      "category": "culture",
+      "dimensions": 768,
+      "embedding_model": "nomic-embed-text"
+    },
+    {
+      "id": "music",
+      "title": "Evening jazz concert",
+      "category": "culture",
+      "dimensions": 768,
+      "embedding_model": "nomic-embed-text"
+    },
+    {
+      "id": "walk",
+      "title": "Quiet garden walk",
+      "category": "outdoors",
+      "dimensions": 768,
+      "embedding_model": "nomic-embed-text"
+    },
+    {
+      "id": "workshop",
+      "title": "Beginner pottery workshop",
+      "category": "workshop",
+      "dimensions": 768,
+      "embedding_model": "nomic-embed-text"
+    }
+  ],
+  "search": [
+    {
+      "title": "Quiet garden walk",
+      "category": "outdoors",
+      "similarity": "1.0000"
+    },
+    {
+      "title": "Hilltop hiking route",
+      "category": "outdoors",
+      "similarity": "0.6457"
+    }
+  ],
+  "storage": [
+    {
+      "lab_size": "184 kB"
+    }
+  ],
+  "naturalLanguageSearch": {
+    "checkedAt": "2026-10-14T00:50:58.066Z",
+    "model": "nomic-embed-text",
+    "dimensions": 768,
+    "query": "A peaceful place to walk among trees",
+    "filters": {
+      "category": "outdoors",
+      "createdAt": "past 7 days"
+    },
+    "results": [
+      {
+        "title": "Quiet garden walk",
+        "category": "outdoors",
+        "score": 0.7548015229452112
+      },
+      {
+        "title": "Hilltop hiking route",
+        "category": "outdoors",
+        "score": 0.5547260516024675
+      }
+    ]
+  }
+}

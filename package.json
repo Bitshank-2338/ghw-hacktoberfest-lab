@@ -1,0 +1,1 @@
+{"name":"ghw-tiger-data-lab","version":"1.0.0","private":true,"type":"module","scripts":{"setup":"node setup.mjs","finance":"node finance.mjs","embed":"node embeddings.mjs","evidence":"node evidence.mjs","start":"node dashboard.mjs","test":"node --test verify.test.mjs"},"engines":{"node":">=24"},"dependencies":{"pg":"^8.23.1"}}

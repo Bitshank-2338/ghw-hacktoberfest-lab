@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-14T00:50:58.066Z",
+  "model": "nomic-embed-text",
+  "dimensions": 768,
+  "query": "A peaceful place to walk among trees",
+  "filters": {
+    "category": "outdoors",
+    "createdAt": "past 7 days"
+  },
+  "results": [
+    {
+      "title": "Quiet garden walk",
+      "category": "outdoors",
+      "score": 0.7548015229452112
+    },
+    {
+      "title": "Hilltop hiking route",
+      "category": "outdoors",
+      "score": 0.5547260516024675
+    }
+  ]
+}
