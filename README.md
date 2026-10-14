@@ -47,7 +47,11 @@ Codex generated the database lab, verification scripts and evidence dashboard. G
 
 Eight challenge entries were submitted to MLH with participant approval on 14 October: the five database exercises, two Copilot challenges and current Student Pack evidence. The [Copilot build Discussion](https://github.com/Bitshank-2338/ghw-hacktoberfest-lab/discussions/1) is published.
 
-The Tiger CLI owner account was located and official OAuth authorization completed with explicit approval. Its session now selects the correct existing project. However, the read-only CLI query remains unverified: the initial attempt lacked a database password, and subsequent attempts using the existing private password in the subprocess environment were blocked by the computer's DNS lookup failure for console.cloud.tigerdata.com. The CLI challenge remains unsubmitted. `cli-query.mjs` is a prepared retry helper, syntax-checked only; it does not persist a database password, weaken TLS checks, change system DNS or modify application data.
+The Tiger CLI owner account was located and official OAuth authorization completed with explicit approval. Its session selects the correct existing project. After a temporary DNS failure recovered, `cli-query.mjs` successfully ran a read-only query through the actual official CLI: two lab hypertables, 1,156 sensor readings and 100 captured market ticks. The dated result is in evidence/cli-query.json. The helper supplies the existing password only in the subprocess environment; it does not persist a database password, weaken TLS checks, change system DNS or modify application data.
+
+## Participant's Cursor builds
+
+The cursor folder preserves two actual tip-calculator builds created in Cursor with Grok 4.7 High Fast and Grok 4.6 High Fast. See [the independent analysis](cursor/analysis.md) for prompts, normal-case checks and observed rounding/overflow limitations. Their original prompts differed, so these original builds alone are not claimed as a controlled same-prompt benchmark.
 
 ## References
 

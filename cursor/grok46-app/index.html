@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Split the check</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme =
+            saved === "light" || saved === "dark"
+              ? saved
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand">
+          <p class="brand__name">Split the check</p>
+          <p class="brand__hint">Tip first, then divide. Cents wait until the end.</p>
+        </div>
+
+        <div class="theme-control">
+          <span class="theme-control__label" id="theme-light-label">Light</span>
+          <button
+            type="button"
+            class="theme-switch"
+            id="theme-toggle"
+            role="switch"
+            aria-checked="false"
+            aria-labelledby="theme-light-label theme-dark-label"
+          >
+            <span class="theme-switch__track" aria-hidden="true">
+              <span class="theme-switch__thumb"></span>
+            </span>
+          </button>
+          <span class="theme-control__label" id="theme-dark-label">Dark</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <form class="panel form" id="split-form" novalidate>
+          <div class="field">
+            <label for="bill">Bill</label>
+            <div class="input-wrap">
+              <span class="affix" aria-hidden="true">$</span>
+              <input
+                id="bill"
+                name="bill"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                placeholder="99.99"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="tip">Tip</label>
+            <div class="input-wrap">
+              <input
+                id="tip"
+                name="tip"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.1"
+                placeholder="12.5"
+                required
+              />
+              <span class="affix affix--end" aria-hidden="true">%</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="people">People</label>
+            <input
+              id="people"
+              name="people"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              step="1"
+              placeholder="3"
+              required
+            />
+          </div>
+
+          <button type="submit" class="submit">Split check</button>
+        </form>
+
+        <section class="panel result" id="result" aria-live="polite">
+          <p class="result__empty" id="result-empty">
+            Add the bill, tip, and party size to see the total and each share.
+          </p>
+          <p class="result__error" id="result-error" hidden></p>
+          <dl class="result__figures" id="result-figures" hidden>
+            <div>
+              <dt>Total</dt>
+              <dd id="out-total"></dd>
+            </div>
+            <div>
+              <dt>Tip</dt>
+              <dd id="out-tip"></dd>
+            </div>
+            <div>
+              <dt>Each person</dt>
+              <dd id="out-each"></dd>
+            </div>
+          </dl>
+        </section>
+      </main>
+    </div>
+
+    <script src="splitBill.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

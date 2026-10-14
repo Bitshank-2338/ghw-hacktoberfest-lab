@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tip calculator</title>
+    <meta
+      name="description"
+      content="Split a restaurant bill by tip percentage and number of people. Runs entirely in the browser."
+    >
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("tip-calculator-theme");
+          if (theme === "light" || theme === "dark") {
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        } catch (error) {
+          /* Storage can be unavailable. The system setting still applies. */
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="sheet">
+      <header class="intro">
+        <div class="intro-bar">
+          <h1>Tip calculator</h1>
+          <button
+            type="button"
+            id="theme-switch"
+            class="theme-switch"
+            role="switch"
+            aria-checked="false"
+          >
+            Dark mode
+            <span class="theme-switch-track" aria-hidden="true">
+              <span class="theme-switch-thumb"></span>
+            </span>
+          </button>
+        </div>
+        <p>Enter the bill, the tip percent, and how many people are splitting it.</p>
+      </header>
+
+      <form id="tip-form" class="form" novalidate>
+        <div class="field">
+          <label for="bill">Bill amount</label>
+          <p id="bill-hint" class="hint">Amount before tip. Use numbers only, such as 42.50.</p>
+          <input
+            id="bill"
+            name="bill"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            required
+            aria-describedby="bill-hint bill-error"
+          >
+          <p id="bill-error" class="error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="tip">Tip percentage</label>
+          <p id="tip-hint" class="hint">Use 0 if there is no tip. 15 means 15 percent.</p>
+          <input
+            id="tip"
+            name="tip"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            required
+            aria-describedby="tip-hint tip-error"
+          >
+          <p id="tip-error" class="error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="people">Number of people</label>
+          <p id="people-hint" class="hint">A whole number of at least 1.</p>
+          <input
+            id="people"
+            name="people"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            spellcheck="false"
+            required
+            aria-describedby="people-hint people-error"
+          >
+          <p id="people-error" class="error" role="alert"></p>
+        </div>
+
+        <button type="submit">Calculate</button>
+      </form>
+
+      <section class="results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Split</h2>
+        <div id="results" aria-live="polite" aria-atomic="true">
+          <p id="results-status" class="status">Results appear here after you calculate.</p>
+          <dl class="figures" hidden>
+            <div>
+              <dt>Total bill</dt>
+              <dd id="total-bill">$0.00</dd>
+            </div>
+            <div>
+              <dt>Total tip</dt>
+              <dd id="total-tip">$0.00</dd>
+            </div>
+            <div class="share">
+              <dt>Amount per person</dt>
+              <dd id="per-person">$0.00</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
