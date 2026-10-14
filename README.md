@@ -43,7 +43,11 @@ Five database tests passed: sensor bounds/metadata, genuine time chunks, continu
 
 ## AI disclosure and challenge limits
 
-Codex generated the database lab, verification scripts and evidence dashboard. GitHub Copilot generated the original DataPulse app; its authenticated session and original files were inspected, rather than attributing Codex output to Copilot. Codex's public copy corrects the sample-generation toast and documents demo limitations. `nomic-embed-text` is used at runtime for embeddings. Desktop Cursor and Grok Bot work remains the participant's responsibility until actual tool-specific evidence is supplied. Tiger CLI is installed and authenticated, but its current account sees a different, empty project; the connected-database agent challenge is not claimed complete.
+Codex generated the database lab, verification scripts and evidence dashboard. GitHub Copilot generated the original DataPulse app; its authenticated session and original files were inspected, rather than attributing Codex output to Copilot. Codex's public copy corrects the sample-generation toast and documents demo limitations. `nomic-embed-text` is used at runtime for embeddings. Desktop Cursor and Grok Bot work remains the participant's responsibility until actual tool-specific evidence is supplied.
+
+Eight challenge entries were submitted to MLH with participant approval on 14 October: the five database exercises, two Copilot challenges and current Student Pack evidence. The [Copilot build Discussion](https://github.com/Bitshank-2338/ghw-hacktoberfest-lab/discussions/1) is published.
+
+The Tiger CLI owner account was located and official OAuth authorization completed with explicit approval. Its session now selects the correct existing project. However, the read-only CLI query remains unverified: the initial attempt lacked a database password, and subsequent attempts using the existing private password in the subprocess environment were blocked by the computer's DNS lookup failure for console.cloud.tigerdata.com. The CLI challenge remains unsubmitted. `cli-query.mjs` is a prepared retry helper, syntax-checked only; it does not persist a database password, weaken TLS checks, change system DNS or modify application data.
 
 ## References
 
